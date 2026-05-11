@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Sahabati Desti Nur Padilah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --primary: #db2777;
+            --secondary: #7c3aed;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #020617;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        /* Background Partikel & Gradasi Bergerak */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #020617, #1e1b4b, #4c1d95, #831843);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Kartu Glassmorphism Ultra */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Foto Profil Melayang & Morphing */
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-25px) scale(1.05); }
+        }
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 8px solid rgba(255, 255, 255, 0.1);
+            animation: morph 10s ease-in-out infinite;
+            box-shadow: 0 0 60px rgba(219, 39, 119, 0.5);
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+
+        /* Floating Icons */
+        .floating-icon {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: floatUp 8s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 0.8; transform: scale(1); }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(0); opacity: 0; }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(219, 39, 119, 0.8);
+        }
+
+        .energy-card {
+            background: linear-gradient(135deg, rgba(219, 39, 119, 0.15), rgba(124, 58, 237, 0.15));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .energy-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .pulse-btn {
+            animation: pulseShadow 2s infinite;
+        }
+        @keyframes pulseShadow {
+            0% { box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(219, 39, 119, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(219, 39, 119, 0); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 md:p-10">
+    <div class="animated-bg"></div>
+    <div id="icon-container"></div>
+
+    <main class="max-w-3xl w-full glass rounded-[60px] p-8 md:p-16 relative z-10 text-center">
+        
+        <!-- Foto Utama -->
+        <div class="profile-wrapper mb-12">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglVyXLjtCbh7kjVJgC7UhQ4CCF7tCldFf-Mmsoyj_XMBbp5XX8dgGfOFmNUt5s0Pa9L7xymxBSAayNaLKTTCz0tbAGs5Kcxi_WBVubzz_OS0kcC0nF9GO7qb9a1Kbj-CLytyFxeajBo7Heb-wJxb2MIXF_IwhF916nEvm3-UN6YmOBeq00uKMuTLzX/s2488/1000954783.jpg" 
+                 alt="Desti Nur Padilah" 
+                 class="profile-img mx-auto"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Desti+Nur+Padilah&background=db2777&color=fff&size=250'">
+            
+            <!-- Ornamen Cahaya -->
+            <div class="absolute inset-0 bg-pink-500/20 blur-[60px] -z-10 animate-pulse"></div>
+        </div>
+
+        <!-- Header -->
+        <div class="mb-10">
+            <p class="text-pink-400 font-bold tracking-[0.4em] text-xs uppercase mb-4 animate-bounce">Mabruk Alfa Mabruk</p>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 glow-text italic tracking-tighter leading-tight">
+                Desti Nur Padilah
+            </h1>
+            <div class="h-1.5 w-40 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Narasi Semangat Perjuangan -->
+        <div class="space-y-8 text-gray-200 text-base md:text-xl leading-relaxed">
+            <p class="font-light italic opacity-90">
+                "Dibalik senyum yang teduh, mengalir keberanian seorang pendekar dan kecerdasan seorang Sahabati pergerakan."
+            </p>
+            
+            <div class="energy-card p-8 rounded-[40px] shadow-2xl">
+                <h3 class="text-pink-400 font-black mb-4 flex items-center justify-center uppercase tracking-[0.2em] text-sm">
+                    <span class="mr-3">💠</span> Dedikasi PMII & Pesona Mojang <span class="ml-3">💠</span>
+                </h3>
+                <p class="text-sm md:text-lg opacity-90 leading-relaxed font-medium">
+                    Hari ini adalah perayaan untukmu, jiwa yang tak lelah berproses di <strong>PMII</strong> dan kini tengah melangkah anggun dalam perjalanan <strong>Mojang</strong> yang sedang engkau raih. Teruslah pancarkan pesona kecerdasan Manajemenmu dan ketangguhan Pencak Silatmu. Biarkan setiap langkahmu menjadi inspirasi bahwa kecantikan sejati lahir dari keberanian berjuang!
+                </p>
+            </div>
+
+            <p class="text-white font-bold text-lg md:text-2xl animate-pulse">
+                "Mahkota itu adalah simbol perjuanganmu, teruslah bersinar!"
+            </p>
+        </div>
+
+        <!-- Tombol Interaksi -->
+        <div class="mt-14 flex flex-col items-center gap-6">
+            <button onclick="celebrate()" class="pulse-btn relative bg-gradient-to-r from-pink-600 to-purple-600 text-white px-14 py-5 rounded-full font-black text-lg shadow-xl hover:scale-105 transition-all transform active:scale-95 group">
+                <span class="relative z-10 flex items-center">
+                    RAYAKAN PERJUANGAN DESTI <span class="ml-3 group-hover:rotate-45 transition-transform">✨</span>
+                </span>
+            </button>
+            
+            <div class="flex gap-4 opacity-50 text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">
+                <span>Sahabati PMII</span>
+                <span>•</span>
+                <span>Manajer</span>
+                <span>•</span>
+                <span>Mojang Sukapura</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Animasi floating icons
+        function createIcons() {
+            const container = document.getElementById('icon-container');
+            const icons = ['❤️', '✨', '⭐', '💠', '🌸', '👑'];
+            
+            setInterval(() => {
+                const icon = document.createElement('div');
+                icon.className = 'floating-icon';
+                icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+                icon.style.left = Math.random() * 100 + 'vw';
+                icon.style.top = '105vh';
+                icon.style.fontSize = (Math.random() * 30 + 10) + 'px';
+                icon.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                icon.style.filter = `blur(${Math.random() * 2}px)`;
+                
+                container.appendChild(icon);
+                
+                setTimeout(() => {
+                    icon.remove();
+                }, 10000);
+            }, 300);
+        }
+
+        // Efek kembang api/confetti
+        function celebrate() {
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#db2777', '#ffffff', '#fbbf24']
+                }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#7c3aed', '#ffffff', '#fbbf24']
+                }));
+            }, 250);
+        }
+
+        window.onload = () => {
+            createIcons();
+            setTimeout(celebrate, 1000);
+        };
+    </script>
+</body>
+</html>
+
+```
+
